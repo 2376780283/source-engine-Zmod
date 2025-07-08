@@ -74,9 +74,11 @@ Studio models are position independent, so the cache manager can move them.
 #define MAXSTUDIOVERTS		65536	// TODO: tune this
 #define	MAXSTUDIOFLEXVERTS	10000	// max number of verts that can be flexed per mesh.  TODO: tune this
 #else
+
 #define MAXSTUDIOTRIANGLES	65536
 #define MAXSTUDIOVERTS		32768
-#define	MAXSTUDIOFLEXVERTS	5000
+#define MAXSTUDIOFLEXVERTS	5000
+
 #endif
 #define MAXSTUDIOSKINS		32		// total textures
 #define MAXSTUDIOBONES		128		// total bones actually used
