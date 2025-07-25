@@ -9,6 +9,11 @@
 #include "KeyValues.h"
 #include "filesystem.h"
 
+// #include "tier0/memdbgon.h"
+
+// command line
+#include "tier0/icommandline.h"
+
 #include "ti#include "gamepadui_interface.h"
 #include "gamepadui_basepanel.h"
 #include "gamepadui_mainmenu.h"
@@ -20,13 +25,15 @@
 #include "KeyValues.h"
 #include "filesystem.h"
 
+// #include "tier0/memdbgon.h"
+
+// command line
 #include "tier0/icommandline.h"
 
 #include "tier0/memdbgon.h"
 
 #define GAMEPADUI_MAINMENU_SCHEME GAMEPADUI_RESOURCE_FOLDER "schememainmenu.res"
 #define GAMEPADUI_MAINMENU_FILE GAMEPADUI_RESOURCE_FOLDER "mainmenu.res"
-
 // ────────────────────────────────────────────────
 //  比较函数：priority 越大，按钮排越前
 //  放在本文件顶部（或类外任何位置皆可）
