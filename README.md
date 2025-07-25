@@ -1,7 +1,11 @@
 ### source-engine-zmod
 
-===========================
-
+---
+## 预览图
+| 🫠 | 🤯 |
+|----------|----------|
+| ![](PreviewImage/Screenshot_2025-03-01-11-49-34-042_com.valvesoftware.source.jpg) | ![](Screenshot_2025-03-01-12-00-36-798_com.valvesoftware.source.jpg/player.png) |
+---
 ## 如你所见 以下是对此仓库の介绍
 
 ```
@@ -18,7 +22,7 @@ This project is using waf buildsystem. If you have waf-related questions look ht
 # 特性
 - 支持 Sandbox 菜单（ZZHのlife：优化内容 修改为全屏菜单 优化布局）
 - 支持 gamepadui
-- 成就系统
+- 成就系统支持
 - 剩下的/2376780283/source-engine 有提到
 
 # 未来工作
