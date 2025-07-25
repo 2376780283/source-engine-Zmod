@@ -198,111 +198,12 @@ void CGameMenuItem::PaintBackground()
 		DrawBoxFade( 0, 0, wide, tall, GetButtonBgColor(), 1.0f, 255, 0, true );
 		DrawBoxFade( 2, 2, wide - 4, tall - 4, Color( 0, 0, 0, 96 ), 1.0f, 255, 0, true );
 	}
-//	mdl = new CMDLPanel( this, "MDLPanel" );
-//	mdl->SetMDL( "/model/alyx.mdl" );
-//	mdl->Paint();
-	//mdl->LookAtMDL();
-//	mdl->SetPos( 200,200 );
-//	mdl->SetSize( 200,200 );
 }
 
 void CGameMenuItem::SetRightAlignedText(bool state)
 {
 	m_bRightAligned = state;
 }
-
-class ImageButton : public vgui::Panel
-{
-public:
-	ImageButton(Panel *parent, const char *imageName) : Panel(parent)
-	{
-		m_szUrl = NULL;
-
-		m_textureID = vgui::surface()->CreateNewTextureID();
-		vgui::surface()->DrawSetTextureFile( m_textureID, imageName, true, false);
-		m_bSelected = false;
-	}
-
-	virtual void Paint()
-	{
-		if( GameUI().IsInLevel() ) return;
-
-		int color = m_bSelected ? 120 : 160;
-
-		vgui::surface()->DrawSetColor(color, color, color, 100);
-		vgui::surface()->DrawFilledRect( 0, 0, GetWide(), GetTall() );
-		vgui::surface()->DrawSetTexture( m_textureID );
-
-		vgui::surface()->DrawSetColor( 255, 255, 255, 255 );
-		vgui::surface()->DrawTexturedRect( 0, 0, GetWide(), GetTall() );
-	}
-
-	virtual void OnMousePressed(MouseCode code)
-	{
-		if( GameUI().IsInLevel() ) return;
-
-		m_bSelected = true;
-		input()->SetMouseCapture(GetVPanel());
-	}
-
-	virtual void OnMouseReleased(MouseCode code)
-	{
-		if( GameUI().IsInLevel() ) return;
-
-		m_bSelected = false;
-#ifdef ANDROID
-		if( m_szUrl ) SDL_OpenURL( m_szUrl );
-#endif
-
-		input()->SetMouseCapture(NULL);
-	}
-
-	void SetUrl( const char *url )
-	{
-		m_szUrl = url;
-	}
-
-	virtual void OnScreenSizeChanged( int nOldWidth, int nOldHeight )
-	{
-		int nw, nh;
-		surface()->GetScreenSize(nw, nh);
-		int scaled_w = scheme()->GetProportionalScaledValue(m_iOldW);
-
-		Panel::SetPos(nw-scheme()->GetProportionalScaledValue(m_iOldX)-scaled_w, m_iOldY);
-		Panel::SetSize(scaled_w, scheme()->GetProportionalScaledValue(m_iOldH));
-	}
-
-	void SetBounds( int x, int y, int w, int h )
-	{
-		m_iOldX = x; m_iOldY = y;
-		m_iOldW = w; m_iOldH = h;
-
-		int nw, nh;
-		surface()->GetScreenSize(nw, nh);
-		int scaled_w = scheme()->GetProportionalScaledValue(m_iOldW);
-
-		Panel::SetPos(nw-scheme()->GetProportionalScaledValue(m_iOldX)-scaled_w, m_iOldY);
-		Panel::SetSize(scaled_w, scheme()->GetProportionalScaledValue(m_iOldH));
-	}
-
-private:
-	int m_iOldX, m_iOldY;
-	int m_iOldW, m_iOldH;
-
-	bool m_bSelected;
-	int m_textureID;
-	const char *m_szUrl;
-};
-
-void AddUrlButton(vgui::Panel *parent, const char *imgName, const char *url )
-{
-	static int i = 0;
-	ImageButton *panel = new ImageButton( parent, imgName );
-	panel->SetUrl( url );
-	panel->SetBounds( 15+i*52, 10, 48, 48 );
-	i++;
-}
-
 //-----------------------------------------------------------------------------
 // Purpose: General purpose 1 of N menu
 //-----------------------------------------------------------------------------
@@ -780,12 +681,9 @@ bool g_bIsCreatingNewGameMenuForPreFetching = false;
 CBasePanel::CBasePanel() : Panel(NULL, "BaseGameUIPanel")
 {
 	
-       if (CommandLine()->FindParm( "-autoscaleui" ))
-	   {
-         if( NeedProportional() )
-	     SetProportional( true );
-	   } 
-	   
+       
+       if( NeedProportional() )
+	   SetProportional( true );   
 	g_pBasePanel = this;
 	m_bLevelLoading = false;
 	m_eBackgroundState = BACKGROUND_INITIAL;
@@ -933,11 +831,6 @@ CBasePanel::CBasePanel() : Panel(NULL, "BaseGameUIPanel")
 		}
 	}
 
-	if( IsAndroid() )
-	{
-		// add log wiew android log out 
-		// GamepadUI_log (" is Android module Default \n");
-	}
 }
 
 //-----------------------------------------------------------------------------
