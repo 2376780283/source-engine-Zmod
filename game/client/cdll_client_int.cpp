@@ -1165,7 +1165,7 @@ void CHLClient::PostInit()
 		}
 	}
 #endif
-
+// fixme ： 代码太狗石了 需要优化
 #ifndef PORTAL
 #if defined(GAMEPADUI)
     if (IsGamepadUI())
