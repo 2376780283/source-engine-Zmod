@@ -2,9 +2,10 @@
 
 ---
 ## 预览图
-| 🫠 | 🤯 |
-|----------|----------|
-| ![](PreviewImage/Screenshot_2025-03-01-11-49-34-042_com.valvesoftware.source.jpg) | ![](Screenshot_2025-03-01-12-00-36-798_com.valvesoftware.source.jpg/player.png) |
+
+![](PreviewImage/Screenshot_2025-03-01-11-49-34-042_com.valvesoftware.source.jpg) 
+![](Screenshot_2025-03-01-12-00-36-798_com.valvesoftware.source.jpg/player.png) 
+
 ---
 ## 如你所见 以下是对此仓库の介绍
 
